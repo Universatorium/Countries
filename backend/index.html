@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medaillen-Spiegel</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Medaillen-Spiegel:</h1>
+
+  <table>
+    <tr>
+      <th><h2>Land</h2></th>
+      <th>Gold  </th>
+      <th>Silber  </th>
+      <th>Bronze  </th>
+      <th>Gesamt</th>
+    </tr>
+
+    <tbody id="data-body"></tbody>
+  </table>
+
+  <script>
+    // AJAX-Anfrage, um die Daten vom Server abzurufen und anzuzeigen
+    fetch('/').then(response => response.json()).then(data => {
+      // Sortieren der Daten nach der Anzahl der Goldmedaillen
+      data.sort((a, b) => b.gesamt - a.gesamt);
+
+      const dataBody = document.getElementById('data-body');
+
+      data.forEach(item => {
+        const row = document.createElement('tr');
+
+        const nameCell = document.createElement('td');
+        nameCell.textContent = item.name;
+        row.appendChild(nameCell);
+
+        const goldCell = document.createElement('td');
+        goldCell.textContent = " " + item.gold + " ";
+        row.appendChild(goldCell);
+
+        const silverCell = document.createElement('td');
+        silverCell.textContent = ' ' + item.silver + ' ';
+        row.appendChild(silverCell);
+
+        const bronzeCell = document.createElement('td');
+        bronzeCell.textContent = ' ' + item.bronze + ' ';
+        row.appendChild(bronzeCell);
+
+        const totalCell = document.createElement('td');
+        totalCell.textContent = ' ' + item.gesamt + ' ';
+        row.appendChild(totalCell);
+
+        dataBody.appendChild(row);
+      });
+    }).catch(error => {
+      console.error('Fehler beim Abrufen der Daten:', error);
+    });
+  </script>
+</body>
+</html>

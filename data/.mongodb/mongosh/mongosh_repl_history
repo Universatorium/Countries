@@ -1,0 +1,4 @@
+db.countries.count()
+db.count()
+db.countries.find()
+use TestDB

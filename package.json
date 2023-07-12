@@ -1,0 +1,18 @@
+{
+  "name": "medaillen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+    "scripts": {
+    "start": "npm start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^5.7.0",
+    "mongodb-client": "^0.0.1",
+    "mongoose": "^7.3.2",
+    "nodemon": "^3.0.1"
+  }
+}
