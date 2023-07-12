@@ -30,7 +30,7 @@ app.get("/", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Docker app listening on port ${port}`);
 });
 
 // Hilfsfunktion zum Rendern der index.html-Datei mit den Daten
